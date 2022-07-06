@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setAccountData } from './store/slices/userSlice'
+import { setAccountData, setLoggedIn } from './store/slices/userSlice'
 import { setTokenActive } from './store/slices/appSlice'
 
 import MainNav from './components/Navigation/MainNav'
@@ -10,7 +10,7 @@ import Session from './components/Sessions/Session'
 import Login from './components/Authentication/Login'
 
 function App() {
-    // const user = useSelector((state) => state.user)
+    const user = useSelector((state) => state.user)
     const app = useSelector((state) => state.app)
 
     const dispatch = useDispatch()
@@ -29,6 +29,7 @@ function App() {
                 // store account data and mark token as active
                 dispatch(setAccountData(accountData))
                 dispatch(setTokenActive(true))
+                dispatch(setLoggedIn(true))
             } catch (error) {
                 // on any errors, set displayNewForm to true and set active token to false
                 console.log('Error in validateToken', error.message)
@@ -40,7 +41,7 @@ function App() {
 
         if (token) evaluateToken(token) // validate token if one exists
         else dispatch(setTokenActive(false)) // else set token active as false, and display new form
-    }, [app.api, dispatch])
+    }, [app.api, dispatch, user.isLoggedIn])
 
     // manage sessions route here too
     return (
@@ -50,7 +51,7 @@ function App() {
                 <Route path="/" element={<Navigate to="/home" />} />
                 <Route path="/home/*" element={<Session />} />
                 <Route path="/sessions" element={<h2>list of all sessions</h2>} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login/*" element={<Login />} />
 
             </Routes>
         </>
