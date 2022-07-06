@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setDisplayNewForm, setSessionsData, setActiveSessionData } from '../../store/slices/appSlice'
+import { setDisplayNewForm } from '../../store/slices/appSlice'
+import { setSessionsData, setActiveSessionData } from '../../store/slices/userSlice'
+
 import { Routes, Route, Navigate } from "react-router-dom";
 import NewSession from './NewSession';
 import ActiveSession from './ActiveSession';

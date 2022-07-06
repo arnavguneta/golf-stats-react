@@ -21,7 +21,7 @@ const pages = [
     <NavLink to="/home" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`}>Home</NavLink>,
     <NavLink to="/sessions" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`}>Sessions</NavLink>]
 const MainNav = props => {
-    const app = useSelector((state) => state.app)
+    const user = useSelector((state) => state.user)
     const [anchorElNav, setAnchorElNav] = useState(null);
 
     const handleOpenNavMenu = (event) => {
@@ -139,8 +139,8 @@ const MainNav = props => {
                         <NavLink to="/sessions">Sessions</NavLink>
                     </Typography>} */}
 
-                    {!app.isTokenActive && <Button href="/login" color="inherit">LOGIN</Button>}
-                    {app.isTokenActive && <Button color="inherit">LOGOUT</Button>}
+                    {!user.isLoggedIn && <Button href="/login" color="inherit">Sign In</Button>}
+                    {user.isLoggedIn && <Button color="inherit">Sign Out</Button>}
                 </Toolbar>
             </Container>
         </AppBar>
