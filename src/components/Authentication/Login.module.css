@@ -1,0 +1,34 @@
+.root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 80vh;
+    flex-direction: column;
+}
+
+
+.root form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.MuiTextField-root {
+    margin: 1rem !important;
+    width: 300px !important;
+}
+
+.MuiButton-root {
+    margin: 1.5rem !important; 
+}
+
+.errorText {
+    color: red; 
+}
+
+
+
+

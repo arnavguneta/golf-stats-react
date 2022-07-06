@@ -1,0 +1,13 @@
+.navLink {
+    text-decoration: none;
+}
+
+.navLink:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.active {
+    padding-bottom: 5px;
+    border-bottom: 2.5px solid rgb(255, 255, 255);
+}
