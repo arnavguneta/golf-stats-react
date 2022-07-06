@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 
 const ActiveSession = props => {
-    const app = useSelector((state) => state.app)
+    // const app = useSelector((state) => state.app)
     
     // load the session state using app data and display it 
     return (
