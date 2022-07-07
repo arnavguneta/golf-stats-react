@@ -5,7 +5,8 @@ export const appSlice = createSlice({
     initialState: {
         isTokenActive: false,
         displayNewForm: false,
-        api: 'http://localhost:3001/api/v1'
+        api: 'http://localhost:3001/api/v1',
+        firstVisit: true
     },
     reducers: {
         setTokenActive: (state, action) => {
@@ -13,9 +14,12 @@ export const appSlice = createSlice({
         },
         setDisplayNewForm: (state, action) => {
             state.displayNewForm = action.payload
+        },
+        setFirstVisit: (state, action) => {
+            state.firstVisit = action.payload
         }
     },
 })
 
-export const { setTokenActive, setDisplayNewForm } = appSlice.actions
+export const { setTokenActive, setDisplayNewForm, setFirstVisit } = appSlice.actions
 export default appSlice.reducer

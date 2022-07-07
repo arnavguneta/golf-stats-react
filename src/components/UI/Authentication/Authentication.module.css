@@ -1,0 +1,134 @@
+.root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-height: 80vh;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 16px;
+    margin-top: 32px;
+}
+
+.modalContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    min-height: 93vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.35);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 1.25rem;
+}
+
+.logo div a {
+    margin-left: 14px;
+}
+
+.logo * {
+    margin-bottom: 12px;
+}
+
+.root form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.buttonDrawer {
+    margin: 1rem;
+}
+
+.errorText {
+    color: red;
+}
+
+.sub {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.promptText span {
+    font-size: 1.05rem;
+}
+
+.promptText span a {
+    margin-left: 8px;
+    text-decoration: none;
+}
+
+
+/* mobile */
+@media only screen and (max-width: 900px) {
+    .root {
+        width: 320px !important;
+    }
+    .MuiButton-root {
+        margin: 0.75rem !important;
+    }
+    .MuiTextField-root {
+        margin: 1rem !important;
+        width: 250px !important;
+    }
+}
+
+/* desktop */
+@media only screen and (min-width: 900px) {
+    .root {
+        width: 340px !important;
+    }
+    .MuiButton-root {
+        margin: 1rem !important;
+    }
+    .MuiTextField-root {
+        margin: 1rem !important;
+        width: 225px !important;
+    }
+}
+
+/* narrow mobile */
+@media only screen and (max-width: 375px) {
+    .root {
+        width: 75% !important;
+    }
+    .MuiButton-root {
+        margin: 0.5rem !important;
+        font-size: 14px !important;
+    }
+    .MuiTextField-root {
+        margin: 1rem !important;
+        width: 75% !important;
+    }
+    .MuiTextField-root {
+        margin: 0.75rem !important;
+        width: 200px !important;
+    }
+    .buttonDrawer {
+        margin: 0.75rem;
+    }
+    .promptText {
+        font-size: 1rem;
+    }
+    .sub {
+        margin: 1.25rem;
+    }
+}

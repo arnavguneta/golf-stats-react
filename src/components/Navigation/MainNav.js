@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link, useLocation } from 'react-router-dom'
 
 import styles from './MainNav.module.css'
 
@@ -17,12 +17,18 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Container from "@mui/material/Container";
 
-const pages = [
-    <NavLink to="/home" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`}>Home</NavLink>,
-    <NavLink to="/sessions" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`}>Sessions</NavLink>]
+const homePaths = ['/new-session', '/active-session']
 const MainNav = props => {
     const user = useSelector((state) => state.user)
     const [anchorElNav, setAnchorElNav] = useState(null);
+    const location = useLocation()
+
+    console.log(location.pathname)
+
+    const pages = [
+        <NavLink to="/home" className={({ isActive }) => (isActive || homePaths.includes(location.pathname)) ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`}>Home</NavLink>,
+        <NavLink to="/sessions" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`}>Sessions</NavLink>
+    ]
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -49,8 +55,8 @@ const MainNav = props => {
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
-                        href="/"
+                        component={Link}
+                        to="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -104,10 +110,9 @@ const MainNav = props => {
                     <Typography
                         variant="h5"
                         noWrap
-                        component="a"
-                        href=""
+                        component={Link}
+                        to="/"
                         sx={{
-                            mr: 2,
                             display: { xs: 'flex', md: 'none' },
                             flexGrow: 1,
                             fontFamily: 'monospace',
@@ -139,8 +144,8 @@ const MainNav = props => {
                         <NavLink to="/sessions">Sessions</NavLink>
                     </Typography>} */}
 
-                    {!user.isLoggedIn && <Button href="/login" color="inherit">Sign In</Button>}
-                    {user.isLoggedIn && <Button color="inherit">Sign Out</Button>}
+                    {!user.isLoggedIn && <Button component={NavLink} to="/login" color="inherit">Sign In</Button>}
+                    {user.isLoggedIn && <Button component={NavLink} to="/logout" color="inherit">Sign Out</Button>}
                 </Toolbar>
             </Container>
         </AppBar>
