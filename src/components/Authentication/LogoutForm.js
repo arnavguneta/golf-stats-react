@@ -7,7 +7,7 @@ import Logo from '../UI/Authentication/Logo'
 import ButtonDrawer from '../UI/Authentication/ButtonDrawer'
 import PromptText from '../UI/Authentication/PromptText'
 
-const LoginForm = ({ handleSubmit }) => {
+const LogoutForm = ({ handleSubmit }) => {
 
     const handleSubmitEvent = async e => {
         e.preventDefault();
@@ -28,4 +28,4 @@ const LoginForm = ({ handleSubmit }) => {
     );
 };
 
-export default LoginForm;
+export default LogoutForm;

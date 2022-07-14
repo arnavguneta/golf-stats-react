@@ -13,6 +13,8 @@ const Title = props => {
                     fontWeight: 700,
                     color: 'inherit',
                     textDecoration: 'none',
+                    minWidth: '370px',
+                    justifyContent: 'center'
                 }}
             >
                 {props.children}
@@ -27,6 +29,8 @@ const Title = props => {
                     fontWeight: 700,
                     color: 'inherit',
                     textDecoration: 'none',
+                    minWidth: '250px',
+                    justifyContent: 'center'
                 }}
             >
                 {props.children}

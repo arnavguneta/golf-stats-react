@@ -17,7 +17,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
     const app = useSelector((state) => state.app)
-    // const user = useSelector((state) => state.user)
+    const user = useSelector((state) => state.user)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -57,15 +57,15 @@ function App() {
                 // check for any active session from the users sessions data
                 const activeSession = getActiveSession(sessionData)
                 if (!validateResponse(activeSession)) throw new Error('No active session found')
-
                 // if the last modified date was more than an hour ago on an active session, end the session
                 if (Date.now() - activeSession.end >= 3600000) {
                     await fetch(`${app.api}/sessions/end/`, { method: 'PATCH', headers: { 'Authorization': `Bearer ${token}` } })
                     dispatch(setDisplayNewForm(true))
                 } else {
                     // an active session was found
-                    dispatch(setActiveSessionData(activeSession))
                     dispatch(setDisplayNewForm(false))
+                    // only set new active session when one doesnt exist, or the two objects are different
+                    if (!validateResponse(user.activeSession) || user.activeSession.start !== activeSession.start) dispatch(setActiveSessionData(activeSession))
                 }
             } catch (error) {
                 console.log('Error in fetching sessions', error.message)
@@ -88,7 +88,7 @@ function App() {
                 dispatch(setTokenActive(false))
             } // if no token exists token is inactive, not logged in
         }
-    }, [app.api, app.firstVisit, dispatch])
+    }, [app.api, app.firstVisit, user.activeSession, dispatch])
 
     // manage sessions route here
     return (

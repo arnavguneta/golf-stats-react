@@ -3,16 +3,47 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 80vh;
+    min-height: 100vh;
 }
 
 .columnCenter {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    justify-content: space-around;
+}
+
+.centerNew {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 80vh;
+}
+
+.columnCenterNew {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     text-align: center;
     min-height: 25vh;
+    justify-content: space-evenly;
+}
+
+.spaceEvenly {
+    justify-content: space-evenly;
+}
+
+.buttonRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    min-height: 20vh;
+    min-width: 90%;
 }
 
 /* .start {

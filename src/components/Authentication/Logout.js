@@ -1,14 +1,16 @@
 import LogoutForm from './LogoutForm'
 
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { setFirstVisit } from '../../store/slices/appSlice'
 
 const Logout = () => {
     const app = useSelector((state) => state.app)
     const user = useSelector((state) => state.user)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (app.firstVisit) {
@@ -23,7 +25,8 @@ const Logout = () => {
 
         console.log('removing token')
         localStorage.removeItem("login_token")
-        navigate('/')
+        dispatch(setFirstVisit(true))
+        // navigate('/')
     }
 
     return (
