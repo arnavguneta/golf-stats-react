@@ -1,5 +1,6 @@
 .navLink {
     text-decoration: none;
+    color: inherit;
 }
 
 .navLink:visited {
